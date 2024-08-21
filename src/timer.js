@@ -8,40 +8,53 @@ class TimerComp extends React.Component {
       second: 0,
       minute: 0,
       hour: 0,
+      isStart: false,
       title: "stopwatch",
     };
   }
   startTimer = () => {
-    this.setState({
-      title: "start",
-    });
-    interval = setInterval(() => {
+    if (this.state.isStart === false) {
       this.setState({
-        second: this.state.second + 1,
+        title: "start",
+        isStart: true,
       });
-      if (this.state.second === 59) {
+      interval = setInterval(() => {
         this.setState({
-          second: 0,
-          minute: this.state.minute + 1,
+          second: this.state.second + 1,
         });
-      }
-      if (this.state.minute === 60) {
-        this.setState({
-          minute: 0,
-          hour: this.state.hour + 1,
-        });
-      }
-    }, 1000);
+        if (this.state.second === 59) {
+          this.setState({
+            second: 0,
+            minute: this.state.minute + 1,
+          });
+        }
+        if (this.state.minute === 60) {
+          this.setState({
+            minute: 0,
+            hour: this.state.hour + 1,
+          });
+        }
+      }, 1000);
+    }
   };
   stopTimer = () => {
     clearInterval(interval);
-    this.setState({
-      title: "stop",
-    });
+    if (this.state.title === "stopwatch") {
+      this.setState({
+        title: "stopwatch",
+        isStart: false,
+      });
+    } else {
+      this.setState({
+        title: "stop",
+        isStart: false,
+      });
+    }
   };
   resetTimer = () => {
     this.stopTimer();
     this.setState({
+      isStart: false,
       second: 0,
       minute: 0,
       hour: 0,
