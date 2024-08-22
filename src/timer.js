@@ -1,5 +1,7 @@
 import React from "react";
 import ActionBtn from "./action";
+import TimeListComp from "./timeList";
+
 var interval;
 class TimerComp extends React.Component {
   constructor() {
@@ -66,19 +68,23 @@ class TimerComp extends React.Component {
     let h = this.state.hour;
     let m = this.state.minute;
     let s = this.state.second;
-    return (
-      <div className="timer">
-        <i class="fi fi-tr-stopwatch"></i>
-        <h1>{`${h > 9 ? h : "0" + h}:${m > 9 ? m : "0" + m}:${
-          s > 9 ? s : "0" + s
-        }`}</h1>
 
-        <p>{this.state.title}</p>
-        <ActionBtn
-          startTimer={this.startTimer}
-          stopTimer={this.stopTimer}
-          resetTimer={this.resetTimer}
-        />
+    return (
+      <div>
+        <div className="timer">
+          <i class="fi fi-tr-stopwatch"></i>
+          <h1>{`${h > 9 ? h : "0" + h}:${m > 9 ? m : "0" + m}:${
+            s > 9 ? s : "0" + s
+          }`}</h1>
+
+          <p>{this.state.title}</p>
+          <ActionBtn
+            startTimer={this.startTimer}
+            stopTimer={this.stopTimer}
+            resetTimer={this.resetTimer}
+          />
+        </div>
+        <TimeListComp />
       </div>
     );
   }

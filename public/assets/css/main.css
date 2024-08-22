@@ -10,48 +10,61 @@
 body {
   font-family: "Golden";
   line-height: 0;
+  cursor: default;
 }
 .main {
   width: 100%;
   height: 100vh;
-  background-color: #1c6ef2;
+  max-height: 100vh;
+  min-height: 100vh;
+  background-color: #1963da;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   flex-direction: column;
 }
+.main.main_dark {
+  background-color: #1f1f1f;
+}
+
 .main h1 {
   color: white;
   font-size: 30px;
 }
 .timer {
+  margin-top: 20px;
   border-radius: 50%;
   background: linear-gradient(145deg, #1963da, #1e76ff);
   box-shadow: 20px 20px 60px #185ece, -20px -20px 60px #207fff;
-  height: 420px;
-  width: 420px;
+  height: 350px;
+  width: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   flex-direction: column;
 }
+.main.main_dark .timer {
+  background: linear-gradient(145deg, #1c1c1c, #212121);
+  box-shadow:  23px 23px 46px #121212,
+               -23px -23px 46px #2c2c2c;
+}
 .timer i {
   font-size: 50px;
   position: absolute;
   text-wrap: nowrap;
-  top: 60px;
+  top: 40px;
   color: rgba(255, 255, 255, 0.3);
   line-height: 0;
 }
 .timer h1 {
-  font-size: 70px;
+  font-size: 55px;
   text-wrap: nowrap;
 }
 .timer p {
   position: absolute;
   font-size: 20px;
-  bottom: 140px;
+  bottom: 120px;
   color: rgba(255, 255, 255, 0.3);
 }
 .action {
@@ -66,7 +79,7 @@ body {
 }
 .action > div {
   background-color: white !important;
-  padding: 30px;
+  padding: 20px;
   border-radius: 100%;
   display: flex;
   justify-content: center;
@@ -81,11 +94,64 @@ body {
   line-height: 0;
   position: static;
 }
+.main.main_dark .timer .action > div > i {
+  color: #000000 !important;
+}
 .action > div.btn-play {
-  padding: 40px;
+  padding: 30px;
+}
+
+.timeList {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  border-radius: 20px;
+  margin-top: 70px;
+  width: 100%;
+  height: 200px;
+}
+.timeList p {
+  position: static;
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+}
+.timeItem {
+  margin-top: revert;
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 10px;
+}
+.timeItem i {
+  color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+.mood {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 100%;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.26);
+  transform: rotate(-20deg);
+  z-index: 100;
+}
+.main.main_dark .mood i {
+  color: #000000 !important;
+}
+.mood i {
+  font-size: 20px;
+  color: #185ece;
 }
 @media screen and (max-width: 1365px) {
   .timer {
+    margin-top: 50px;
     width: 300px;
     height: 300px;
   }
@@ -111,5 +177,8 @@ body {
   }
   .action > div.btn-play {
     padding: 30px;
+  }
+  .timeList {
+    margin-top: 100px;
   }
 }

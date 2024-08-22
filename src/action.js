@@ -1,19 +1,20 @@
 import React from "react";
-class ActionBtn extends React.Component {
-  render() {
+const ActionBtn = (props) => {
+
+
     return (
       <div className="action">
-        <div onClick={this.props.stopTimer}>
+        <div onClick={props.stopTimer}>
           <i className="fi fi-br-ban "></i>
         </div>
-        <div className="btn-play" onClick={this.props.startTimer}>
+        <div className="btn-play" onClick={props.startTimer}>
           <i className="fi fi-sc-play "></i>
         </div>
-        <div onClick={this.props.resetTimer}>
+        <div onClick={props.resetTimer}>
           <i className="fi fi-br-rotate-left"></i>
         </div>
       </div>
     );
-  }
-}
+ 
+};
 export default ActionBtn;
