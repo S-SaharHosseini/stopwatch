@@ -15,8 +15,7 @@ body {
 .main {
   width: 100%;
   height: 100vh;
-  max-height: 100vh;
-  min-height: 100vh;
+  max-height: fit-content;
   background-color: #1963da;
   display: flex;
   align-items: center;
@@ -44,11 +43,18 @@ body {
   position: relative;
   flex-direction: column;
 }
+.timer:hover {
+  box-shadow: inset 20px 20px 60px #1450af, inset -20px -20px 60px #1c6ced;
+}
 .main.main_dark .timer {
   background: linear-gradient(145deg, #1c1c1c, #212121);
-  box-shadow:  23px 23px 46px #121212,
-               -23px -23px 46px #2c2c2c;
+  box-shadow: 23px 23px 46px #121212, -23px -23px 46px #2c2c2c;
 }
+.main.main_dark .timer:hover {
+  box-shadow: inset 33px 33px 66px #0e0e0e,
+            inset -33px -33px 66px #2a2a2a;
+}
+
 .timer i {
   font-size: 50px;
   position: absolute;
@@ -108,7 +114,7 @@ body {
   flex-direction: column;
   border-radius: 20px;
   margin-top: 70px;
-  width: 100%;
+  width: 30%;
   height: 200px;
 }
 .timeList p {
@@ -180,5 +186,6 @@ body {
   }
   .timeList {
     margin-top: 100px;
+    width: 80%;
   }
 }

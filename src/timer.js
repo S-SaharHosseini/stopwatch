@@ -63,6 +63,15 @@ class TimerComp extends React.Component {
       title: "stopwatch",
     });
   };
+  handeNewTime = () => {
+    let h = this.state.hour;
+    let m = this.state.minute;
+    let s = this.state.second;
+    let newTime = `${h > 9 ? h : "0" + h}:${m > 9 ? m : "0" + m}:${
+      s > 9 ? s : "0" + s
+    }`;
+    this.props.setTimeArr([...this.props.timeArr, newTime]);
+  };
 
   render() {
     let h = this.state.hour;
@@ -70,22 +79,24 @@ class TimerComp extends React.Component {
     let s = this.state.second;
 
     return (
-      <div>
+      <>
         <div className="timer">
-          <i class="fi fi-tr-stopwatch"></i>
+          <i className="fi fi-tr-stopwatch"></i>
           <h1>{`${h > 9 ? h : "0" + h}:${m > 9 ? m : "0" + m}:${
             s > 9 ? s : "0" + s
           }`}</h1>
 
           <p>{this.state.title}</p>
+
           <ActionBtn
             startTimer={this.startTimer}
             stopTimer={this.stopTimer}
             resetTimer={this.resetTimer}
+            handeNewTime={this.handeNewTime}
           />
         </div>
-        <TimeListComp />
-      </div>
+        <TimeListComp>{this.props.timeArr}</TimeListComp>
+      </>
     );
   }
 }

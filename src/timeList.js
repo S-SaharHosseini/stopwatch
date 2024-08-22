@@ -1,24 +1,11 @@
 import React from "react";
-const TimeListComp = () => {
+import Item from "./timeItem";
+const TimeListComp = (props) => {
   return (
     <div className="timeList">
-      <div className="timeItem">
-        <p>00:05:10</p>
-        <i class="fi fi-rr-cross"></i>
-      </div>
-      <div className="timeItem">
-        <p>00:05:10</p>
-        <i class="fi fi-rr-cross"></i>
-      </div>
-      <div className="timeItem">
-        <p>00:05:10</p>
-        <i class="fi fi-rr-cross"></i>
-      </div>
-      <div className="timeItem">
-        <p>00:05:10</p>
-        <i class="fi fi-rr-cross"></i>
-      </div>
-     
+      {props.children.map((c, index) => (
+        <Item key={index}>{c}</Item>
+      ))}
     </div>
   );
 };

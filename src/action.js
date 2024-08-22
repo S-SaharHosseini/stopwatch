@@ -4,7 +4,7 @@ const ActionBtn = (props) => {
 
     return (
       <div className="action">
-        <div onClick={props.stopTimer}>
+        <div onClick={ ()=>{props.stopTimer();props.handeNewTime()} }>
           <i className="fi fi-br-ban "></i>
         </div>
         <div className="btn-play" onClick={props.startTimer}>
