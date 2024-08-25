@@ -51,17 +51,21 @@ body {
   box-shadow: 23px 23px 46px #121212, -23px -23px 46px #2c2c2c;
 }
 .main.main_dark .timer:hover {
-  box-shadow: inset 33px 33px 66px #0e0e0e,
-            inset -33px -33px 66px #2a2a2a;
+  box-shadow: inset 33px 33px 66px #0e0e0e, inset -33px -33px 66px #2a2a2a;
 }
 
 .timer i {
-  font-size: 50px;
+  font-size: 40px;
   position: absolute;
   text-wrap: nowrap;
   top: 40px;
   color: rgba(255, 255, 255, 0.3);
   line-height: 0;
+}
+.lap {
+  position: absolute;
+  top: 110px;
+  color: rgba(255, 255, 255, 0.3);
 }
 .timer h1 {
   font-size: 55px;
@@ -121,6 +125,8 @@ body {
   position: static;
   font-size: 18px;
   color: rgb(255, 255, 255);
+  text-align: center;
+  cursor: pointer;
 }
 .timeItem {
   margin-top: revert;
@@ -128,9 +134,9 @@ body {
   margin-bottom: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 .timeItem i {
   color: rgba(255, 255, 255, 0.2);
@@ -162,7 +168,7 @@ body {
     height: 300px;
   }
   .timer i {
-    font-size: 40px;
+    font-size: 35px;
     top: 30px;
   }
   .timer h1 {
@@ -188,4 +194,14 @@ body {
     margin-top: 100px;
     width: 80%;
   }
+  .lap {
+    top: 90px;
+  }
+}
+.time_detail {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
 }

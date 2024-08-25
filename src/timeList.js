@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Item from "./timeItem";
-const TimeListComp = (props) => {
+import { colorContext } from "./testContext";
+const TimeListComp = () => {
+  const times = useContext(colorContext);
   return (
     <div className="timeList">
-      {props.children.map((c, index) => (
-        <Item key={index}>{c}</Item>
+      {times.timeArr.map((c, index) => (
+        <Item key={index} c={c} index={index}>
+        </Item>
       ))}
     </div>
   );

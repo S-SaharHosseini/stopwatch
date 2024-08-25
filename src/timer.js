@@ -1,6 +1,6 @@
 import React from "react";
 import ActionBtn from "./action";
-import TimeListComp from "./timeList";
+import { colorContext } from "./testContext";
 
 var interval;
 class TimerComp extends React.Component {
@@ -14,6 +14,7 @@ class TimerComp extends React.Component {
       title: "stopwatch",
     };
   }
+  static contextType = colorContext;
   startTimer = () => {
     if (this.state.isStart === false) {
       this.setState({
@@ -64,13 +65,15 @@ class TimerComp extends React.Component {
     });
   };
   handeNewTime = () => {
-    let h = this.state.hour;
-    let m = this.state.minute;
-    let s = this.state.second;
-    let newTime = `${h > 9 ? h : "0" + h}:${m > 9 ? m : "0" + m}:${
-      s > 9 ? s : "0" + s
-    }`;
-    this.props.setTimeArr([...this.props.timeArr, newTime]);
+    if (this.state.isStart === true) {
+      let h = this.state.hour;
+      let m = this.state.minute;
+      let s = this.state.second;
+      let newTime = `${h > 9 ? h : "0" + h}:${m > 9 ? m : "0" + m}:${
+        s > 9 ? s : "0" + s
+      }`;
+      this.context.setTimeArr([...this.context.timeArr, newTime]);
+    }
   };
 
   render() {
@@ -81,21 +84,22 @@ class TimerComp extends React.Component {
     return (
       <>
         <div className="timer">
-          <i className="fi fi-tr-stopwatch"></i>
-          <h1>{`${h > 9 ? h : "0" + h}:${m > 9 ? m : "0" + m}:${
-            s > 9 ? s : "0" + s
-          }`}</h1>
+          <div className="time_detail" onClick={this.handeNewTime}>
+            <i className="fi fi-tr-stopwatch"></i>
+            <p className="lap">lap</p>
+            <h1>{`${h > 9 ? h : "0" + h}:${m > 9 ? m : "0" + m}:${
+              s > 9 ? s : "0" + s
+            }`}</h1>
 
-          <p>{this.state.title}</p>
+            <p>{this.state.title}</p>
+          </div>
 
           <ActionBtn
             startTimer={this.startTimer}
             stopTimer={this.stopTimer}
             resetTimer={this.resetTimer}
-            handeNewTime={this.handeNewTime}
           />
         </div>
-        <TimeListComp>{this.props.timeArr}</TimeListComp>
       </>
     );
   }
